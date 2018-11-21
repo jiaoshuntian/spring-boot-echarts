@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    var testdate = eval('[{"id":1,"name":"邵","pid":0},{"id":2,"name":"端","pid":1},{"id":3,"name":"玉","pid":1},{"id":4,"name":"英","pid":2},{"id":5,"name":"铠","pid":2},{"id":6,"name":"智","pid":2},{"id":7,"name":"宣","pid":3},{"id":8,"name":"纪","pid":3},{"id":9,"name":"鉴","pid":4},{"id":10,"name":"铭","pid":4},{"id":11,"name":"镮","pid":4},{"id":12,"name":"水","pid":7},{"id":13,"name":"荣","pid":8},{"id":14,"name":"杰","pid":9},{"id":15,"name":"通","pid":12},{"id":16,"name":"达","pid":13},{"id":17,"name":"逵","pid":13},{"id":18,"name":"文志","pid":14},{"id":19,"name":"都","pid":15},{"id":20,"name":"邦","pid":15},{"id":21,"name":"进臣","pid":18},{"id":22,"name":"进恭","pid":18},{"id":23,"name":"经","pid":21},{"id":24,"name":"纯","pid":21},{"id":25,"name":"维","pid":21},{"id":26,"name":"舜乐","pid":22},{"id":27,"name":"从周","pid":23},{"id":28,"name":"承兆","pid":26},{"id":29,"name":"吉兆","pid":26},{"id":30,"name":"利兆","pid":26},{"id":31,"name":"节兆","pid":26},{"id":32,"name":"应兆","pid":26},{"id":33,"name":"永官","pid":27},{"id":34,"name":"永宦","pid":27},{"id":35,"name":"永祜","pid":27},{"id":36,"name":"钦","pid":28},{"id":37,"name":"际","pid":28},{"id":38,"name":"铎","pid":31},{"id":39,"name":"锡","pid":32},{"id":40,"name":"泽光","pid":36},{"id":41,"name":"泽豹","pid":37},{"id":42,"name":"享","pid":38},{"id":43,"name":"泽成","pid":39},{"id":44,"name":"忻","pid":40},{"id":45,"name":"快","pid":40},{"id":46,"name":"悻","pid":40},{"id":47,"name":"尖","pid":40},{"id":48,"name":"学先","pid":41},{"id":49,"name":"爽","pid":42},{"id":50,"name":"谈","pid":42},{"id":51,"name":"贡","pid":42}]')
+    function transData(a, idStr, pidStr, chindrenStr){
+        var r = [], hash = {}, id = idStr, pid = pidStr, children = chindrenStr, i = 0, j = 0, len = a.length;
+        for(; i < len; i++){
+            hash[a[i][id]] = a[i];
+        }
+        for(; j < len; j++){
+            var aVal = a[j], hashVP = hash[aVal[pid]];
+            if(hashVP){
+                !hashVP[children] && (hashVP[children] = []);
+                hashVP[children].push(aVal);
+            }else{
+                r.push(aVal);
+            }
+        }
+        return r;
+    }
+    var result = transData(testdate, 'id', 'pid', 'chindren');
+    console.log("result")
+    console.log(result)
+</script>
+<body>
+
+</body>
+</html>
